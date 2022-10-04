@@ -11,6 +11,8 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
+import java.net.URI;
+
 /**
  * Instrumented test, which will execute on an Android device.
  *
@@ -26,7 +28,8 @@ public class ExampleInstrumentedTest {
 
         // Initialize the eyes SDK and set your private API key.
         Eyes eyes = new Eyes();
-        eyes.setApiKey("YOUR_API_KEY");
+        eyes.setApiKey(BuildConfig.APPLITOOLS_API_KEY);
+        eyes.setServerUrl(URI.create(BuildConfig.APPLITOOLS_SERVER_URL));
 
         try {
             // Start the test

@@ -44,12 +44,12 @@ public class DocumentationExampleTest {
     @Rule
     public ActivityTestRule<GoogleMapsActivity> mGoogleMapActivityRule = new ActivityTestRule(GoogleMapsActivity.class, false, false);
 
-    private static String eyesServerUrl = "https://eyesapi.applitools.com";
+    private static String serverUrl = BuildConfig.APPLITOOLS_SERVER_URL;
     private static String appName = "EKB Example : classic app";
     private static String batchName = "EKB Example : classic";
-    private static String apiKey = "YOUR_API_KEY";
+    private static String apiKey = BuildConfig.APPLITOOLS_API_KEY;
     private static String testName = "Hello World test";
-    private static EyesRunner runner = null;
+    private static EyesRunner runner;
     private static Configuration suiteConfig;
     private Eyes eyes;
 
@@ -60,7 +60,7 @@ public class DocumentationExampleTest {
         suiteConfig.setHideCaret(true)
                 .setAppName(appName)
                 .setApiKey(apiKey)
-                .setServerUrl(eyesServerUrl)
+                .setServerUrl(serverUrl)
                 //Add the following line to force use of Android PixelCopy to obtain screenshots
                 //This can improve the quality of the screenshot, for example to ensure rendering of the shadow layer.
                 .setFeatures(Feature.PIXEL_COPY_SCREENSHOT)
