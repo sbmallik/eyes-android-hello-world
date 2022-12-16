@@ -1,15 +1,16 @@
 package com.applitools.helloworld.android;
 
-import android.support.test.rule.ActivityTestRule;
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
+import androidx.test.rule.ActivityTestRule;
 
 import com.applitools.eyes.android.espresso.Eyes;
 
 import org.junit.Rule;
 import org.junit.Test;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 import java.net.URI;
 
@@ -20,34 +21,34 @@ import java.net.URI;
  */
 public class ExampleInstrumentedTest {
 
-    @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
+  @Rule
+  public ActivityScenarioRule<MainActivity> mActivityRule = new ActivityScenarioRule<>(MainActivity.class);
 
-    @Test
-    public void simpleTest() {
+  @Test
+  public void simpleTest() {
 
-        // Initialize the eyes SDK and set your private API key.
-        Eyes eyes = new Eyes();
-        eyes.setApiKey(BuildConfig.APPLITOOLS_API_KEY);
-        eyes.setServerUrl(URI.create(BuildConfig.APPLITOOLS_SERVER_URL));
+    // Initialize the eyes SDK and set your private API key.
+    Eyes eyes = new Eyes();
+    eyes.setApiKey(BuildConfig.APPLITOOLS_API_KEY);
+    eyes.setServerUrl(URI.create(BuildConfig.APPLITOOLS_SERVER_URL));
 
-        try {
-            // Start the test
-            eyes.open("Hello World!", "My first Espresso Android test!");
+    try {
+      // Start the test
+      eyes.open("Hello World!", "My first Espresso Android test!");
 
-            // Visual checkpoint #1.
-            eyes.checkWindow("Hello!");
+      // Visual checkpoint #1.
+      eyes.checkWindow("Hello!");
 
-            onView(withId(R.id.click_me_btn)).perform(click());
+      onView(withId(R.id.click_me_btn)).perform(click());
 
-            // Visual checkpoint #2.
-            eyes.checkWindow("Click!");
+      // Visual checkpoint #2.
+      eyes.checkWindow("Click!");
 
-            // End the test.
-            eyes.close();
-        } finally {
-            // If the test was aborted before eyes.close was called, ends the test as aborted.
-            eyes.abortIfNotClosed();
-        }
+      // End the test.
+      eyes.close();
+    } finally {
+      // If the test was aborted before eyes.close was called, ends the test as aborted.
+      eyes.abortIfNotClosed();
     }
+  }
 }
