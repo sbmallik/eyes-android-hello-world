@@ -14,6 +14,7 @@ import com.applitools.eyes.android.common.TestResultContainer;
 import com.applitools.eyes.android.common.TestResults;
 import com.applitools.eyes.android.common.TestResultsSummary;
 import com.applitools.eyes.android.common.config.Configuration;
+import com.applitools.eyes.android.components.androidx.AndroidXComponentsProvider;
 import com.applitools.eyes.android.espresso.ClassicRunner;
 import com.applitools.eyes.android.espresso.Eyes;
 import com.applitools.eyes.android.espresso.fluent.Target;
@@ -71,7 +72,7 @@ public class DocumentationExampleTest {
            Uncomment the call to 'eyes.setComponentsProvider' if you use AndroidX components such as
            NestedScrollView, RecyclerView and ViewPager2
         */
-    //eyes.setComponentsProvider(new AndroidXComponentsProvider());
+    eyes.setComponentsProvider(new AndroidXComponentsProvider());
     eyes.setConfiguration(suiteConfig);
   }
 
