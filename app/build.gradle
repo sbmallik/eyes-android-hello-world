@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.applitools.helloworld.android"
-        minSdkVersion 19
-        targetSdkVersion 32
+        minSdkVersion 26
+        targetSdkVersion 33
         versionCode 3
         versionName "1.2"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -17,35 +17,55 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        packagingOptions {
+            exclude 'META-INF/DEPENDENCIES'
+        }
     }
     namespace 'com.applitools.helloworld.android'
 }
 
 configurations.all {
     resolutionStrategy {
-        force 'com.android.support:support-media-compat:27.+'
-        force 'com.android.support:support-v7:27.+'
-        force 'com.android.support:support-v4:27.+'
-        force 'com.android.support:support-annotations:27.+'
+        // force 'com.android.support:support-media-compat:27.+'
+        // force 'com.android.support:support-v7:27.+'
+        // force 'com.android.support:support-v4:27.+'
+        // force 'com.android.support:support-annotations:27.+'
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    // implementation 'com.applitools:vhs-androidx:+'
 
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation 'androidx.test:rules:1.5.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
 
-    androidTestImplementation 'com.applitools:eyes-android-common:4.7.10'
-    androidTestImplementation 'com.applitools:eyes-android-core:4.7.10'
-    androidTestImplementation 'com.applitools:eyes-android-components:4.7.10@aar'
-    androidTestImplementation 'com.applitools:eyes-android-components-androidx:4.7.10@aar'
-    androidTestImplementation 'com.applitools:eyes-android-espresso:4.7.10@aar'
+    androidTestImplementation 'com.applitools:eyes-android-common:4.12.0'
+    androidTestImplementation 'com.applitools:eyes-android-core:4.12.0'
+    androidTestImplementation 'com.applitools:eyes-android-components:4.12.0@aar'
+    androidTestImplementation 'com.applitools:eyes-android-components-androidx:4.12.0@aar'
+    androidTestImplementation 'com.applitools:eyes-android-espresso:4.12.0@aar'
+    // if Using Support
+    // androidTestImplementation 'com.applitools:eyes-android-components-support:4.10.15-beta@aar'
 
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
+    //Native UFG
+    implementation("com.applitools:vhs-androidx:1.0.58") {
+        exclude group: 'com.applitools', module: 'eyes-android-common'
+        exclude group: 'com.applitools', module: 'eyes-android-components'
+        exclude group: 'com.applitools', module: 'eyes-android-components-androidx'
+    }
+    // Or if the target application uses the support libraries then use
+    /*
+    implementation("com.applitools:vhs-support:1.0.53") {
+      exclude group: 'com.applitools', module: 'eyes-android-common'
+      exclude group: 'com.applitools', module: 'eyes-android-components'
+      exclude group: 'com.applitools', module: 'eyes-android-components-support'
+      exclude module: 'commons-logging'
+    }
+    */
 }
