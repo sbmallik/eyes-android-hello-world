@@ -14,7 +14,6 @@ import androidx.test.rule.ActivityTestRule;
 import com.applitools.eyes.android.common.AndroidDeviceInfo;
 import com.applitools.eyes.android.common.AndroidDeviceName;
 import com.applitools.eyes.android.common.BatchInfo;
-import com.applitools.eyes.android.common.EyesRunner;
 import com.applitools.eyes.android.common.Feature;
 import com.applitools.eyes.android.common.Region;
 import com.applitools.eyes.android.common.ScreenOrientation;

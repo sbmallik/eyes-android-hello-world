@@ -29,9 +29,9 @@ The github account is required to maintain repository independently. For Mac OS,
 ### Applitools Account
 The Applitools account is required for visual testing purposes. Here is the [link](https://auth.applitools.com/users/register) to register for a free account.
 
-## Running legacy visual tests
+## Setup visual tests
 
-The **main** branch of the repository demonstrates the legacy visual tests for android application.
+The **main** branch of the repository demonstrates the visual tests for android application.
 
 ### Clone repository
 Clone the main branch of the repository with the following command:
@@ -50,9 +50,14 @@ Next, set the following environment variables related to the Applitools account:
 export APPLITOOLS_API_KEY=<API key obtained from applitools account>
 export APPLITOOLS_SERVER_URL=<URL to fetch the visual test results, also associated with the applitools account>
 ```
-Launch the file `DocumentationExampleTest` in the editor. The file may contain multiple tests. So the options are to either run all tests at the **class** level or to run a test individually by clicking the run button next to the **annotated test method** inside the test file. 
+
+### Run legacy visual test
+Launch the file `DocumentationExampleTest` in the editor. The file may contain multiple tests. So the options are to either run all tests at the **class** level or to run a test individually by clicking the run button next to the **annotated test method** inside the test file.
 This action will launch the test app inside the emulator and subsequently launch the target app to perform the test.
 The console logs may be monitored to ascertain the test results.
+
+### Run native mobile grid test
+The native mobile grid (NMG) test process is similar but the test file should be `DocumentationExampleNMGTest`. The visual grid device settings should appear in the Applitools configuration object. 
 
 ### Validate visual test results
 The **Applitools Test Manager** URL is same as the one set in `APPLITOOLS_SERVER_URL`. The console logs will indicate the test result status and a test result URL is provided in case of a test failure. In either case the test results are available from the test manager.
